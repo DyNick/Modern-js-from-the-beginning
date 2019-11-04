@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Type conversion</title>
+</head>
+<body>
+    <script>
+    let val;
+    //NUMBER TO STRING
+    val = 5;
+    //output
+    console.log(val);
+    console.log(typeof val);
+    console.log(val.length);
+    // now covert number to string
+    val = String(5);
+    val = String(4 + 5);
+    console.log(val);
+    console.log(typeof val);
+    console.log(val.length);
+
+    //BOOLEAN TO STRING
+    val = String(true);
+    console.log(val);
+    console.log(typeof val);
+    console.log(val.length);
+    //DATE TO STRING
+    val = String(new Date);
+    console.log(val);
+    console.log(typeof val);
+    console.log(val.length);
+
+    //ARRAY TO STRING
+    val = String([1, 2, 3, 4]);
+    console.log(val);
+    console.log(typeof val);
+    console.log(val.length);
+
+    // toString()
+
+    val = (5).toString();
+    //output
+    console.log(val);
+    console.log(typeof val);
+    console.log(val.length);
+
+    //////////////STRING TO NUMBER/////////////
+    val = Number('15.234');
+    val = Number(true);//1
+    val = Number(false);//-1
+    val = Number(null);//0
+    val = Number('hello');//NaN
+    val = Number([1, 2, 3]);//NaN
+
+    val = parseInt('100.30')//100
+    val = parseFloat(' 100.30')//100.3
+    //output
+    console.log(val);
+    console.log(typeof val);
+    console.log(val.toFixed(2));//100.30
+
+    const val1 = String(5);
+    const val2 = 6;
+    const sum = val1 + val2;
+    console.log(sum);//56
+    console.log(typeof sum);
+
+    const val11 =  + String(5);// change to number
+    const val21 = 6;
+    const sum1 = val11 + val21;
+    console.log(sum1);//11
+    console.log(typeof sum1);
+    
+
+
+    const val111 =  String(5);
+    const val211 = 6;
+    const sum11 = Number(val111 + val211);// change to number but added like a string
+    console.log(sum11);//56
+    console.log(typeof sum11);
+
+    
+    </script>
+</body>
+</html>

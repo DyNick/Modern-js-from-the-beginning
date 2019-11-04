@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Data types</title>
+</head>
+<body>
+    <script>
+    // PRIMITIVE TYPES: String Number Boolean null Undefine Symbol(ES6)
+
+        //String
+        const name = 'Joe';
+         console.log( typeof name);
+        //Number
+        const number = 14;
+        console.log(typeof number);
+        //Boolean
+         const bil = true;
+         console.log( typeof bil);
+
+         //null
+         const car  = null;
+         console.log( typeof car);// will be object
+         //Undefine
+        let test;
+        console.log( typeof test);
+         //Symbol(ES6)
+
+        const symb = Symbol();
+        console.log(typeof symb);
+
+
+
+    //REFERANCE TYPESE : Array, Object literals, Functions ,Datest - all comback objects
+    //Array
+    const hobbies = ['movies', 'music'];
+    console.log(typeof hobbies);
+
+    //Object literal
+    const addres = {
+        city: 'Boston',
+        state: 'MA'
+    }
+    console.log(typeof addres);
+
+    const date = new Date();
+    console.log(date);
+    console.log(typeof date);
+
+    function func(a, b) {
+        return a + b
+    }
+    console.log(typeof func)// return function - its JS mistace 
+
+
+    </script>
+</body>
+</html>

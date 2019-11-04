@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Object literals</title>
+</head>
+<body>
+    <script>
+    const person = {
+        name: 'John',
+        age: 30,
+        adress: {
+            city: 'New York',
+            state: 'New York1'
+        },
+        hobbies: ['sport', 'music']
+    }
+
+    let val = person;
+/*     console.log(val);
+    console.log(val.name);
+    console.log(val['name']);
+    console.log(val.adress.state); */
+    for (let i = 0; i < person.hobbies.length; i++){
+        console.log(person.hobbies);
+        console.log(person.hobbies[i]);
+    }
+    
+    </script>
+</body>
+</html>

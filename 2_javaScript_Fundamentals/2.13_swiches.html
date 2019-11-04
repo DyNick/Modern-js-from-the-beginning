@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Swiches</title>
+</head>
+<body>
+    <script>
+    
+    const color = 'red';
+    switch(color){
+        case 'blue':
+        console.log('color is red ');
+        break;
+        case 'yellow':
+        console.log('color is yellow');
+        break;
+        default:
+        console.log('color is not red or yellow');
+    }
+    let day;   
+     const date = new Date();
+     console.log(date);
+        
+     switch (date.getDay()){
+         case 0:
+         day = 'Sunday';
+         break;
+         case 1:
+         day = 'Monday';
+         break;
+         case 5:
+         day = 'Friday';
+         break;
+         default:
+         console.log('another day')
+         break;
+
+     }
+     console.log(` today is ${day}`);
+    </script>
+</body>
+</html>

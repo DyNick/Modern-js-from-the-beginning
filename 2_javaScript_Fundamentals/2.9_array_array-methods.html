@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Array and array methods</title>
+</head>
+<body>
+    <script>
+    //create some arrays 
+    const array1 = [12, 23,546,67];
+    const array2 = new Array( 24, 454, 45,678);
+    const fruits = ['Appler', 'Banana', 'Oraneg', 'Pear'];
+    const mix = [12, ' some string', null, undefined, NaN];
+
+    let val;
+    // Get array length
+    val = array1.length;
+
+    //check if is array
+    val = Array.isArray(array1);
+
+    //Get single value
+    val = array1[2];
+
+    //Insert into array
+
+    array1[2] = 100;
+
+    //Find index of value
+    val = array1.indexOf(23);
+
+    // MUTATING ARRAYS
+    // add to the end
+    array1.push(234);
+    // add to the front
+    array1.unshift(1234);
+    // take of from end
+    array1.pop();
+    // take of from front
+    array1.shift();
+
+    //splice array
+    array2.splice(1, 3);
+
+    //reverse
+    val = fruits.reverse();
+
+    //concat
+
+    val = array2.concat(array1);
+    // sorting
+    val = fruits.sort();
+    val = array1.sort();
+
+    // use the "compare function"
+    val = array1.sort(function(x, y){
+        return x - y 
+    });
+
+    // find less then 50
+     function less50 (num){
+         return num > 50
+     }
+
+     val1 = array1.find(less50);
+
+    console.log(val);
+    console.log(array1);
+    console.log(array2);
+    console.log(val1);
+
+    
+    
+    </script>
+</body>
+</html>

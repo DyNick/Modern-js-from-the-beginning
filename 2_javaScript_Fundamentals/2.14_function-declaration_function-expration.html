@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Function declaretion function</title>
+</head>
+<body>
+    <script>
+    // function declaretion
+
+    function declarete (name){
+        return name
+    }
+    
+    console.log(declarete('John'));
+    const expression = function (secodName){
+        return secodName
+    }
+
+    console.log(expression('Doe'));
+
+    //Immidiately iinvokable function expression
+    (function(name){
+        console.log(name);
+    })('IIFE')
+
+    </script>
+</body>
+</html>

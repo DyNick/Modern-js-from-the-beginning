@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Block scope with let const</title>
+</head>
+<body>
+    <script>
+        // Global scope
+        var a = 1;
+        let b = 2;
+        const c = 3;
+        
+
+        //Function scope
+        function func(){
+            var a = 3;
+            let b = 4;
+            const c = 5;
+            console.log('Function scope: ' + a,b,c);  
+        }
+        func(); 
+
+        // block scope (when we used var in if statment or for loop value in the global scope was changed to the value from block scope)
+        if(true){
+            var a = 6;
+            let b = 7;
+            const c = 8;
+            console.log('Block scope: ' + a,b,c); 
+        }
+
+        console.log('Global scope: ' + a,b,c);  
+    </script>
+    
+</body>
+</html>

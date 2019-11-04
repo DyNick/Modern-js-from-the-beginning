@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>String method and concatenation</title>
+</head>
+<body>
+    <script>
+        const firstName ='Joe';
+        const lastName = "Doe";
+        const str = 'Some long taxt for chacking'
+        let val;
+        val = 'some';
+        val +='travesy';
+        console.log(val);//sometravesy
+
+        //length
+        val = firstName.length;
+
+        //concat
+        val = firstName.concat(' ', lastName);
+        console.log(val);
+
+
+        //Change case
+
+        val = firstName.toLowerCase();
+        val = firstName.toUpperCase();
+        val = firstName[0];
+        console.log(val);
+
+        //indexOf
+        val = firstName.indexOf('J');
+        console.log(val);//0 if string don't have char will be -1 value
+
+        //charAt()
+        val = firstName.charAt('2');
+        console.log(val);
+
+        //get last char
+        val = firstName.charAt(firstName.length - 1);
+        console.log(val);
+
+        //substring
+        val = firstName.substring(0, 2);
+        console.log(val);
+
+        //slice is much the same like substring
+        val = firstName.slice(0, 2);
+        console.log(val);
+
+          //slice is much the same like substring
+          val = firstName.slice(0, 2);
+        console.log(val);
+
+        //split
+        val = str.split(' ');
+        console.log(val);// ["Some", "long", "taxt", "for", "chacking"]
+
+        //replace
+        val = str.replace('Some' , 'new');
+        console.log(val);
+
+        //includes
+        val = str.includes('Some');
+        console.log(val);
+
+
+    </script>
+</body>
+</html>

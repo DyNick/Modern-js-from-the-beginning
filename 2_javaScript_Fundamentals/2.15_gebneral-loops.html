@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>General loops</title>
+</head>
+<body>
+    <script>
+        // For loop 
+        for (let i = 0; i < 10; i++){
+            console.log(i);
+            if( i === 2){
+                console.log(`${i} is my favorite number`);
+                
+            }
+            if( i === 5){
+                console.log(`${i} is last number of loop`);
+                break;
+            }
+           
+        }
+
+        // While loop 
+        let i = 0;
+       /*  while( i < 20){
+            i++;
+            console.log(`${i} number last then 20`);// will be 20 the last one
+        }
+ */
+        // do while
+
+        do{
+            i++;
+            console.log(`${i} number in the do while loop`);// will be 20 the last one
+        }
+        while( i < 9);
+
+        // forEach 
+        const cars = ['Ferrari', 'Porshe', 'Opel'];
+        cars.forEach(function(car, index, array){
+            console.log(`${index}: ${car} on the cars array wich include:  ${array}`);
+        })
+        // map - is almost much the same like forEach loop
+
+        const fruits = ['banana', 'apple', 'orange'];
+        fruits.map(function(x){
+            console.log(x);
+        })
+
+
+        // for in
+
+        const users = {
+            name: 'John',
+            name1: 'Jo',
+            name2: 'Jack'
+        }
+
+        for( let x in users){
+            console.log(`${x} : ${users[x]}`);
+        }
+
+    </script>
+</body>
+</html>
