@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Keyboard input events</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <style>
+        .input-row{
+            margin: 0 auto;
+            padding: 20px;
+            box-sizing: border-box;
+            box-shadow: 10px 10px 43px 0px rgba(0,0,0,0.49);
+            position: relative;
+          margin-top: 50px;
+        }
+        .result-container{
+          display: none;
+        }
+        </style>
+
+    </head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 input-row" >
+              <h1 class="heading">Loan calculator</h1>
+              <form class="needs-validation" novalidate="">
+          
+        
+                <div class="input-conatiner">
+                  <label for="loan-amount">Loan Amount</label>
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">$</span>
+                    </div>
+                    <input type="text" class="form-control" id="loan-amount" placeholder="Loan Amount" required="">
+                  <!--   <div class="invalid-feedback" style="width: 100%;">
+                      Your username is required.
+                    </div> -->
+                  </div>
+                </div>
+
+                <div class="input-conatiner">
+                    <label for="annual-insert">Annual Insert</label>
+                    <div class="input-group">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text">%</span>
+                      </div>
+                      <input type="text" class="form-control" id="annual-insert" placeholder="Annual insert" required="">
+                    <!--   <div class="invalid-feedback" style="width: 100%;">
+                        Your username is required.
+                      </div> -->
+                    </div>
+                  </div>
+
+                  <div class="input-conatiner">
+                    <label for="repaiment-years">Repayment Years</label>
+                    <div class="input-group">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text">%</span>
+                      </div>
+                      <input type="text" class="form-control" id="repaiment-years" placeholder="Repayment Years" required="">
+                    <!--   <div class="invalid-feedback" style="width: 100%;">
+                        Your username is required.
+                      </div> -->
+                    </div>
+                  </div>
+                </br>
+                <button class="btn btn-primary btn-lg btn-block" type="submit">Continue to checkout</button>
+                </br>
+             
+                <div class='result-container'>
+                    <h4 class="heading-h4">Result</h4>
+                  <div class="input-conatiner">
+                    <div class="input-group">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text">Montly Payment</span>
+                      </div>
+                      <input type="text" class="form-control" id="montly-payment" placeholder="" required="">
+                    </div>
+                  </div>
+                </br>
+                  <div class="input-conatiner">
+                    <div class="input-group">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text">Total Payment</span>
+                      </div>
+                      <input type="text" class="form-control" id="total-payment" placeholder="" required="">
+                    </div>
+                  </div>
+                </br>
+                  <div class="input-conatiner">
+                    <div class="input-group">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text">Total Insert</span>
+                      </div>
+                      <input type="text" class="form-control" id="total-insert" placeholder="" required="">
+                    </div>
+                  </div>
+                </div>
+                
+              </form>
+            </div>
+          </div>
+    </div>
+ 
+
+
+    <script
+    src="https://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+    crossorigin="anonymous"></script>
+
+    <script>
+  
+
+    </script>
+</body>
+</html>

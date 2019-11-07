@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Event listeber and event object</title>
+        <!-- Compiled and minified CSS -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <style>
+        .collection .collection-item{
+            padding: 10px;
+            box-sizing: border-box;
+            margin-bottom: 10px;
+            border: 1px solid #cecece;
+        }
+        .collection .collection-item:last-child{
+            border: 1px solid #cecece;
+        }
+        .collection{
+            border: none;
+        }
+        i{
+            color:red;
+        }
+        .card .card-action{
+            padding: 0;
+        }
+        </style>
+
+    </head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col s12">
+                <div id="main" class="card">
+                    <div class="card-content">
+                        <h1 class="card-title">
+                            Task list
+                        </h1>
+                        <div class="row">
+                            <form action="" id="task-form">
+                                <div class="input-field col s12">
+                                    <input type="text" name ="task" id="task" value= "Walk the dog">
+                                    <!-- <label for="task">NEW TASK</label> -->
+                                </div>
+                                <input type="submit" value= "Add Task" class="btn">
+                            </form>
+                        </div>
+                        <div class="card-action">
+                            <h5 id="task-title">Task</h5>
+                            <ul class="collection">
+                                <li class="collection-item">List<a href="#" class="delete-item secondary-content"><i class="fa fa-remove"></i></a></li>
+                                <li class="collection-item">List<a href="#" class="delete-item secondary-content"><i class="fa fa-remove"></i></a></li>
+                                <li class="collection-item">List<a href="#" class="delete-item secondary-content"><i class="fa fa-remove"></i></a></li>
+                                <li class="collection-item">List<a href="#" class="delete-item secondary-content"><i class="fa fa-remove"></i></a></li>
+                                <li class="collection-item">List<a href="#" class="delete-item secondary-content"><i class="fa fa-remove"></i></a></li>
+                            </ul>
+                            <a href="#" class="clear-tasks btn black">Clear task</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script
+    src="https://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+    crossorigin="anonymous"></script>
+     <!-- Compiled and minified JavaScript -->
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script>
+        const clearBtn = document.querySelector('.clear-tasks');
+        const card = document.querySelector('.card');
+        const header = document.getElementById('task-title');
+        //click
+        clearBtn.addEventListener('click', onEvent);
+
+        //double click
+        clearBtn.addEventListener('dblclick', onEvent);
+
+        //mouseup
+        clearBtn.addEventListener('mouseup', onEvent);
+        //mousedow
+        clearBtn.addEventListener('mousedown', onEvent);
+        //mouseover
+        card.addEventListener('mouseover', onEvent);// added all events in card block
+        //mouseenter
+        card.addEventListener('mouseenter', onEvent);// added  events in card block when cursosr did not on the some block in tothe parent block
+        //mouseout
+        card.addEventListener('mouseout', onEvent);// added all events in card block
+        //mouseleave
+        card.addEventListener('mouseleave', onEvent);
+
+        //mousemove
+        card.addEventListener('mousemove', onEvent);
+
+        
+
+        function onEvent(e){
+            console.log(`EVENT TYPE ${e.type}`);
+            header.innerText = `MOuseX ${e.offsetX} : MouseY ${e.offsetY}`;
+        }
+
+    </script>
+</body>
+</html>
