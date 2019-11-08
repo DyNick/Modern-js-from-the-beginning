@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>NUmber guesser</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css"></link>
+</head>
+<body>
+    <div class="container">
+        <h1>number guesser</h1>
+        <div id="game">
+            <p>Guess number between
+                <span class="min-num"></span>
+                    and
+                <span class="max-num"></span>
+            </p>
+            <input type='number' placeholder = 'Enter ypur guess..'id="guess-input">
+            <input type="submit" value="Submit" id="guess-value">
+            <p class="massege"></p>            
+        </div>
+    </div>
+    <script>
+    let max = 10,
+        min = 1,
+        amount = 3,
+        number = 4,
+        clickCount = 0;
+
+    const btn = document.querySelector('#guess-value'),
+          gessInput = document.querySelector('#guess-input');
+          massege = document.querySelector('.massege'),
+          minNum = document.querySelector('.min-num'),
+          maxNum = document.querySelector('.max-num');
+
+          maxNum.textContent = max;
+          minNum.textContent = min;
+
+    const checkNumbers = (e) => {
+        e.preventDefault();
+        clickCount += 1;
+        const gessInputVal = document.querySelector('#guess-input').value;
+        let gess = parseInt(gessInputVal);
+
+        
+
+        if( isNaN(gess) || gess > max || gess < min){
+            let innerText = (text, color) => {
+                massege.innerText = text;
+                massege.style.color = color;
+            }
+            innerText('Please enter number between 1 and 10', "red") ;
+        }else {
+           if(clickCount === 3){
+                gessInput.disabled = false;
+                massege.innerText = " ";
+                gessInput.value = " ";
+                btn.addEventListener('click', newGamestart);
+           } 
+        }
+
+        if( gess === 4){
+            let innerText = (text, color) => {
+                gessInput.disabled = true;
+                massege.innerText = ` ${text} : ${gess}`;
+                massege.style.color = color;
+                let newGamestart = (e) => {
+                    e.preventDefault();
+                    gessInput.disabled = false;
+                    massege.innerText = " ";
+                    gessInput.value = " ";
+                }
+                btn.addEventListener('click', newGamestart);
+            }
+            innerText('You won it was number', "green") ;
+        }
+        
+
+
+    }
+
+
+    let newGamestart = (e) => {
+                    e.preventDefault();
+                    gessInput.disabled = false;
+                    massege.innerText = " ";
+                    gessInput.value = " ";
+                }
+
+    btn.addEventListener('click', checkNumbers);
+
+    </script>
+</body>
+</html>

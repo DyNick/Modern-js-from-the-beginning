@@ -19,6 +19,14 @@
         .result-container{
           display: none;
         }
+        .preloader_image{
+          width: 320px;
+          display: block;
+          margin: 0 auto;
+        }
+        .preloader{
+          display: none;
+        }
         </style>
 
     </head>
@@ -60,7 +68,7 @@
                     <label for="repaiment-years">Repayment Years</label>
                     <div class="input-group">
                       <div class="input-group-prepend">
-                        <span class="input-group-text">%</span>
+                        <span class="input-group-text">d/y</span>
                       </div>
                       <input type="text" class="form-control" id="repaiment-years" placeholder="Repayment Years" required="">
                     <!--   <div class="invalid-feedback" style="width: 100%;">
@@ -71,7 +79,9 @@
                 </br>
                 <button class="btn btn-primary btn-lg btn-block" type="submit">Continue to checkout</button>
                 </br>
-             
+                <div class="preloader">
+                  <img src="https://flevix.com/wp-content/uploads/2019/07/Spinner-Preloader.gif" alt="" class="preloader_image">
+                </div>
                 <div class='result-container'>
                     <h4 class="heading-h4">Result</h4>
                   <div class="input-conatiner">
@@ -115,8 +125,34 @@
     crossorigin="anonymous"></script>
 
     <script>
-  
+      
+      const button = document.querySelector('.needs-validation');
+      const resultContainer = document.querySelector('.result-container');
+      const montlyPayment = document.querySelector('#montly-payment');
+      const totalPayment = document.querySelector('#total-payment');
+      const totalInsert = document.querySelector('#total-insert');
+      const preloader = document.querySelector('.preloader');
+      const loadAnswer = (e) =>{
+        e.preventDefault();
+        preloader.style.display = "block";
 
+        const loanAmount = document.querySelector('#loan-amount').value;
+        const annualInsert = document.querySelector('#annual-insert').value;
+        const repaimentYears = document.querySelector('#repaiment-years').value;
+
+        let years = repaimentYears * 12;
+        let annualy = annualInsert * 12;
+        let discountFactor = (1 + annualy)^years - 1 / annualy*(1 + annualy)^years;
+        let payment = loanAmount/discountFactor;
+        let montlyPaymentVal = discountFactor / years ;
+        setTimeout(()=>{
+          preloader.style.display = "none";
+          resultContainer.style.display = "block";
+          totalPayment.value = payment;
+          totalInsert.value = montlyPaymentVal;
+        },2000)
+      }
+      button.addEventListener('submit', loadAnswer);
     </script>
 </body>
 </html>
