@@ -25,7 +25,7 @@
     let max = 10,
         min = 1,
         amount = 3,
-        number = 4,
+        numberWin = 4,
         clickCount = 0;
 
     const btn = document.querySelector('#guess-value'),
@@ -43,50 +43,43 @@
         const gessInputVal = document.querySelector('#guess-input').value;
         let gess = parseInt(gessInputVal);
 
-        
+        let innerText = (text, color,disabledVal) => {
+            massege.innerText = text;
+            massege.style.color = color;
+            gessInput.disabled = disabledVal;
+            
+        }
 
+        // let newGamestart = (e) => {
+        //     e.preventDefault();
+        //     gessInput.disabled = false;
+        //     massege.innerText = " ";
+        //     gessInput.value = " ";
+        // }
+        // if number not between 1 and 10
         if( isNaN(gess) || gess > max || gess < min){
-            let innerText = (text, color) => {
-                massege.innerText = text;
-                massege.style.color = color;
-            }
             innerText('Please enter number between 1 and 10', "red") ;
-        }else {
-           if(clickCount === 3){
-                gessInput.disabled = false;
-                massege.innerText = " ";
-                gessInput.value = " ";
-                btn.addEventListener('click', newGamestart);
-           } 
         }
-
-        if( gess === 4){
-            let innerText = (text, color) => {
-                gessInput.disabled = true;
-                massege.innerText = ` ${text} : ${gess}`;
-                massege.style.color = color;
-                let newGamestart = (e) => {
-                    e.preventDefault();
-                    gessInput.disabled = false;
-                    massege.innerText = " ";
-                    gessInput.value = " ";
-                }
-                btn.addEventListener('click', newGamestart);
+      
+        // if number won
+       if( gess === numberWin){
+            innerText(`The number ${numberWin} is correct`, "green", true) ;
+        }
+        // if number did not win
+        else{
+            if(clickCount === 3){
+                innerText(`Winner number is ${numberWin} please try one more`, "red", true) ;
+            }else {
+                innerText(` number  ${gess} isn't corect you have your try is ${3 - clickCount}`, "red", false) ;
             }
-            innerText('You won it was number', "green") ;
         }
-        
+      
 
 
     }
 
 
-    let newGamestart = (e) => {
-                    e.preventDefault();
-                    gessInput.disabled = false;
-                    massege.innerText = " ";
-                    gessInput.value = " ";
-                }
+ 
 
     btn.addEventListener('click', checkNumbers);
 

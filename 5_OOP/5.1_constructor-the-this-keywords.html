@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>OOP</title>
+</head>
+<body>
+    <script>
+    function Person (name, dob){
+        this.name  = name,
+        this.birthday = new Date(dob);
+        this.calculateAge = function (){
+            const dif = Date.now() - this.birthday.getTime();
+            const ageDate = new Date(dif);
+            return Math.abs(ageDate.getUTCFullYear() - 1970);
+
+        }
+    }
+    const brad = new Person('Brad', '1-01-1985');
+    console.log(brad);
+    console.log(brad.calculateAge());
+    </script>
+</body>
+</html>

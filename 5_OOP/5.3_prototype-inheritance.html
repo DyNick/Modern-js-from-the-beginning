@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Prototype inheritance</title>
+</head>
+<body>
+    <script>
+    //CREATE PERSON
+    function Person (firstName, lastName){
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
+    //when we will write without prototype will be error gretting is not a function
+    Person.prototype.gretting = function(){
+        return `Hello ${this.firstName} ${this.lastName}`
+    }
+    const preson1 = new Person('Joe', 'Doe')
+    console.log(preson1.gretting());
+    
+
+    //CREATE CUSTOMER
+    function Customer (firstName, lastName, phone, address){
+        Person.call(this,firstName,lastName);
+        this.phone = phone;
+        this.address = address;
+    }
+
+    //INHERIT  THE PERSON PROTOTYPE METHOD
+    Customer.prototype = Object.create(Person.prototype);
+
+    //MAKE CUSTOMER PROTOTUPE RETURN Customer()
+    Customer.prototype.consrtuctor = Customer;
+    const customer1 = new Customer('Tom','Smith', '33-333-3333', 'NY');
+    console.log(customer1);
+    console.log(customer1.gretting());
+    </script>
+</body>
+</html>

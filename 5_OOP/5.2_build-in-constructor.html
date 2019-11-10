@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Build in constructor</title>
+</head>
+<body>
+    <script>
+
+    //STRINGS
+    const name1 = "Jeff"; // it will be string but when wi will criate with word NEW 
+    const name2 = new String ("Jeff")// it will be object
+    console.log(typeof name1);
+    console.log(typeof name2);
+
+    //NUMBER
+    const num1 = 2;
+    const num2 = new Number(5);
+    console.log(typeof num1);
+    console.log(typeof num2);
+
+    //BOOLEAN
+    const bul1 = true;
+    const bul2 = new Boolean(true);
+
+    console.log(typeof bul1);
+    console.log(typeof bul2);
+
+    //FUNCTION
+    const func1 = function (x, y){
+        return x + y;
+    }
+    console.log(func1(1, 3));
+
+    const func2 = new Function ("x", "y","return x + y");
+    console.log(func2(1, 3));
+
+    //OBJECT
+    //Object don't change typeof
+
+    const obj1 = {
+        name: "John"
+    }
+    const obj2 = new Object({
+        name: "John"
+    })
+    console.log(obj1);
+    console.log(obj2);
+
+    //ARRAY
+    const arr1 = [1,2,3,4];
+    const arr2 = new Array (1,2,3,4);
+    console.log(arr1);
+    console.log(arr2);
+
+    //REGULAR EXPRESSIONS
+    const reg1 = /\w+/;
+    const reg2 = new RegExp('\\w+');
+    console.log(reg1);
+    console.log(reg2);
+
+    </script>
+</body>
+</html>
