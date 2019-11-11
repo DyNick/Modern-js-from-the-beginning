@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sub Classes in ES6</title>
+</head>
+<body>
+    <script>
+        class Person {
+            constructor(firstName, lastName){
+                this.firstName = firstName;
+                this.lastName = lastName;
+            }
+            greeting(){
+                return `Hello ${this.firstName} ${this.lastName}`
+            }
+        }
+
+        class Customer extends Person {
+            constructor(firstName, lastName, phone, street){
+                super (firstName, lastName)
+                this.phone = phone;
+                this.street = street;
+            }
+            static getMemberShipCost (){
+                return 500;
+            }
+
+        }
+
+        const customer1 = new Customer("joe", "doe", "343-23233-333", "streetnew");
+        console.log(customer1);
+        console.log(Customer.getMemberShipCost());
+    </script>
+</body>
+</html>

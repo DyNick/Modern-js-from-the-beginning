@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Using object create</title>
+</head>
+<body>
+    <script>
+        const personProtype = {
+            getting: function(){
+                return `Hello ${this.firstName} ${this.lastName}`
+            },
+            getMaried: function(newlastName){
+                this.lastName = newlastName;
+            }
+        }
+        //first variant
+        const person1 = Object.create(personProtype);
+        person1.firstName = "joe";
+        person1.lastName = "Doe";
+        person1.getMaried("Barker");
+        console.log(person1);
+        console.log(person1.getting());
+
+        //second variant
+        const person2 = Object.create(personProtype,{
+            firstName :{value:"Mary"},
+            lastName :{value:"Bo"},
+            age: {value: "34"}
+        });
+        person2.getMaried("Smith");//Doesn't work ??????????????
+
+        console.log(person2);
+        console.log(person2.getting());
+    </script>
+</body>
+</html>

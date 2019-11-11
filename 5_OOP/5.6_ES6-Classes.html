@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ES6 Classes </title>
+</head>
+<body>
+  
+    <script>
+      class Person {
+        constructor (firstName, lastName, dob){
+            this.firstName = firstName;
+            this.lastName = lastName;
+            this.birthday = new Date(dob);
+           
+        }
+        getting = function (){
+            return `Hello ${this.firstName} ${this.lastName}`
+        }
+        calculateAge() {
+            const  diff = Date.now() - this.birthday.getTime();
+            const ageDate = new Date(diff);
+            return Math.abs(ageDate.getUTCFullYear() - 1970);
+        }
+        getsNewLastName (newLastName){
+            this.lastName = newLastName;
+        }
+        static addNumbers(x, y){
+            return x + y
+        }
+    }
+
+    const person1 = new Person("Joe" , "Doe", "1-10-1980");
+
+    console.log(person1.calculateAge());
+    console.log(person1.getting());
+    
+    person1.getsNewLastName('Thomson');
+    
+    console.log(person1.lastName);
+    console.log(person1.getting());
+    console.log(Person.addNumbers(2,1));
+    </script>
+</body>
+</html>
