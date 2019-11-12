@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ajax-XHR-Introduction</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
+</head>
+<body>
+    <div class="contianer">
+        <button id="button">Get Data</button>
+        <br><br>
+        <div id="output"></div>
+    </div>
+    <script>
+        document.getElementById('button').addEventListener('click', function(){
+            //Create en XHR Object
+            const xhr = new XMLHttpRequest();
+
+            //OPEN
+            xhr.open('GET', 'data.txt', true);
+            //console.log('readystate' , xhr.readyState)
+            // new methods
+
+       /*      xhr.onload = function(){
+                if(this.status === 200){
+                    console.log(this.responseText);
+                }
+            } */
+
+            //Optinal - Used for spinner/loaders
+
+            xhr.onprogress = function (){
+                console.log('readystate' , xhr.readyState);
+            }
+            // old methods
+            xhr.onreadystatechange = function(){
+                //console.log('readystate' , xhr.readyState)
+                if(this.status === 200 && this.readyState=== 4){
+                    console.log(this.responseText);
+                    console.log('readystate in onreadystatechange method' , xhr.readyState);
+                    document.getElementById('output').innerHTML = `<h1>${this.responseText}</h1>`
+                }
+            }
+
+          xhr.onerror = function(){
+                console.log('request errror...')
+            } 
+            xhr.send();
+
+            //HTTP Status
+            // 200: "OK"
+            // 403: "Forbidden"
+            // 404: "Not Found"
+
+            // readyState Values
+            // 0: request not initiliazed
+            // 1: server connection established
+            // 2: request recived
+            // 3: processing request
+            // 4: request finished and response is ready
+        });
+    </script>
+</body>
+</html>
