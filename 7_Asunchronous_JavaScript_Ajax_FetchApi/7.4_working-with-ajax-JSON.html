@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ajax senbox</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
+</head>
+<body>
+    <div class="conteiner">
+        <button id="button1">Get Customer</button>
+        <button id="button2">Get Customers</button>
+        <br><br>
+        <h1>Customer</h1>
+        <div id="customer"></div>
+        <h1>Customers</h1>
+        <div id="customers"></div>
+    </div>
+    <script>
+    
+  
+    const loadcustomer = (e)=>{
+        const xhr = new XMLHttpRequest();
+        xhr.open('GET','customer.json',true);
+
+        xhr.onload = function(){
+            if(this.status === 200){
+                const customer = JSON.parse(this.responseText);
+
+                const output = `
+                <ul>
+                    <li>ID: ${customer.id}</li>
+                    <li>NAME: ${customer.name}</li>
+                    <li>COMPANY: ${customer.comoany}</li>
+                    <li>PHONE: ${customer.phone}</li>
+                </ul>
+                `;
+                document.getElementById('customer').innerHTML = output;
+
+            }
+        }
+
+        xhr.send();
+    }
+
+
+
+    const loadcustomers = (e)=>{
+        const xhr = new XMLHttpRequest();
+        xhr.open('GET','customers.json',true);
+
+        xhr.onload = function(){
+            if(this.status === 200){
+                const customers = JSON.parse(this.responseText);
+                let output = '';
+                customers.forEach((customer) => {
+                    output += `
+                    <ul>
+                        <li>ID: ${customer.id}</li>
+                        <li>NAME: ${customer.name}</li>
+                        <li>COMPANY: ${customer.company}</li>
+                        <li>PHONE: ${customer.phone}</li>
+                    </ul>
+                    `;
+                    document.getElementById('customers').innerHTML = output;
+                });
+               
+              
+
+            }
+        }
+
+        xhr.send();
+    }
+
+    document.getElementById('button1').addEventListener('click',loadcustomer);
+    document.getElementById('button2').addEventListener('click',loadcustomers);
+    </script>
+</body>
+</html>

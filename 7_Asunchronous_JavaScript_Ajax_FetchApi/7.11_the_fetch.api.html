@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>The fetch API</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1>The fetch API</h1>
+        <button id='button1'>Get text</button>
+        <button id='button2'>Get JSON</button>
+        <button id='button3'>Get API data</button>
+        <br><br>
+        <div id='output'></div>
+    </div>
+    <script>
+        document.getElementById('button1').addEventListener('click', getText);
+        document.getElementById('button2').addEventListener('click', getJSON);
+        document.getElementById('button3').addEventListener('click', getExternal);
+        //get local text file data
+        function getText (){
+            fetch('test.txt')
+                .then(function(res){
+                    return res.text();
+                })
+                .then(function(data){
+                    console.log(data);
+                    document.getElementById('output').innerHTML = data;
+                })
+                .catch(function(err){
+                    console.log(err);
+                })
+        }
+
+        // Get local data from JSON
+        function getJSON (){
+            fetch('customers.json')
+                .then(function(res){
+                    return res.json();
+                })
+                .then(function(data){
+                    console.log(data);
+                    let output = '';
+                    data.forEach(function(post){
+                       output += `<li>${post.name}</li>` 
+                    });
+                    document.getElementById('output').innerHTML = output;
+                })
+                .catch(function(err){
+                    console.log(err);
+                })
+        }
+
+        // Get JSON from external API
+        function getExternal(){
+            fetch('https://api.github.com/users')
+                .then(function(res){
+                    return res.json();
+                })
+                .then(function(data){
+                    console.log(data);
+                    let output = '';
+                    data.forEach(function(post){
+                       output += `<li>${post.login}</li>` 
+                    });
+                    document.getElementById('output').innerHTML = output;
+                })
+                .catch(function(err){
+                    console.log(err);
+                })
+        }
+    </script>
+</body>
+</html>

@@ -19,18 +19,18 @@
             const xhr = new XMLHttpRequest();
 
             //OPEN
-            xhr.open('GET', 'data.txt', true);
+            xhr.open('GET', '7.3data.txt', true);
             //console.log('readystate' , xhr.readyState)
-            // new methods
 
+            // new methods
        /*      xhr.onload = function(){
                 if(this.status === 200){
                     console.log(this.responseText);
                 }
             } */
 
-            //Optinal - Used for spinner/loaders
 
+            //ONPROGRESS Optinal - Used for spinner/loaders
             xhr.onprogress = function (){
                 console.log('readystate' , xhr.readyState);
             }
@@ -43,10 +43,12 @@
                     document.getElementById('output').innerHTML = `<h1>${this.responseText}</h1>`
                 }
             }
-
+            //If heppened some error
           xhr.onerror = function(){
                 console.log('request errror...')
             } 
+
+            // SEND neaded after all proceses
             xhr.send();
 
             //HTTP Status

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Callback function</title>
+</head>
+<body>
+    <script>
+    const posts = [
+        {title: 'Post one',body: 'This is post one'},
+        {title: 'Post two',body: 'This is post two'}
+    ];
+
+    function createPost(post) {
+        return new Promise(function(resolve, reject){
+            setTimeout(function(){
+            posts.push(post);
+            const error = false;
+            if(!error){
+                resolve();
+
+            }else{
+                reject('Error: Something went wrong')
+            }
+            
+        },2000)
+        })
+  
+    }
+
+    function getPost() {
+        setTimeout(function(){
+            let ouput = "";
+            posts.forEach(function(post){
+                ouput += `<li>${post.title}</li>`;
+            })
+            document.body.innerHTML = ouput;
+        },1000)
+    }
+    createPost({title: 'Post three',body: 'This is post three'})
+    .then(getPost);
+    
+    </script>
+</body>
+</html>

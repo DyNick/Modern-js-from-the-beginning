@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
+    <title>Chuck Norris Joke Generator</title>
+</head>
+<body>
+    <div class="conteiner">
+        <h2>Chuck Norris Joke Generator</h2>
+       <form action="">
+           <div>
+               <label for="number">Number of jokes</label>
+               <input type="number"  id="number">
+           </div>
+           <div>
+               <button class="get-jokes">Get Jokes</button>
+           </div>
+       </form>
+       <ul class="jokes">
+
+       </ul>
+    </div>
+    <script>
+        document.querySelector('.get-jokes').addEventListener('click',getJokes);
+        function getJokes(e){
+            e.preventDefault();
+            const number = document.querySelector('input[type="number"]').value;
+
+            const xhr = new XMLHttpRequest();
+
+            xhr.open('GET',`http://api.icndb.com/jokes/random/${number}`,true);
+
+            xhr.onload = function(){
+                let output = '';
+                if(this.status === 200){
+                    const response = JSON.parse(this.responseText);
+                    response.value.forEach(element => {
+                        output += `<li>${element.joke}</li>`
+                    });
+                    document.querySelector('.jokes').innerHTML = output;
+                }else{
+                    output = '<li>Some went wrong</li>'
+                }
+            }
+
+            xhr.send();
+        }
+    
+    </script>
+</body>
+</html>

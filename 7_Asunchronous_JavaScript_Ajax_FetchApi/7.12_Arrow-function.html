@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Arrow functions</title>
+</head>
+<body>
+    <script>
+    // function expression
+    const sayHello = function () {
+        console.log('hello1')
+    }
+
+    // Arrow function
+    const sayHello = () =>{
+        console.log('hello2');
+    }
+
+    //One line arrow function does not need braces
+    const sayHello = () =>console.log('hello2');
+
+    // If we want to return 
+    const sayHello = () => 'hello2';
+
+    //reutrn object
+    const sayHello = () => ({msg: 'hello'});
+
+    //Single param does not need parenthesis
+    const sayHello1 = name => `hello ${name}`;
+    console.log(sayHello1("Brad"));
+    
+
+    const users = ['Nathan', 'John', 'William'];
+    //Shorter
+    const nameLenght = users.map((name) => {return name.lenght;});
+
+    // Shortets
+    const nameLenght = users.map(name => {name.lenght;});
+    console.log(nameLenght);
+    
+    </script>
+</body>
+</html>

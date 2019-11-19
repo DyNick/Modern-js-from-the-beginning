@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Book list project ES6</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
+    <style>
+    .success, .error{
+        color: #fff;
+        padding: 5px;
+        margin: 5px 0 15px 0;
+    }
+    .success{
+        background-color: green;
+    }
+    .error{
+        background-color: red;
+    }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Add book</h1>
+        <form action="" id ="book-form">
+            <div>
+                <label for="title">Titile</label>
+                <input type="text" id="title" class="u-full-width">
+            </div>
+            <div>
+                <label for="authot">Author</label>
+                <input type="text" id="author" class="u-full-width">
+            </div>
+            <div>
+                <label for="isbn">ISBN#</label>
+                <input type="number" id="isbn" class="u-full-width">
+            </div>
+            <div>
+                <input type="submit" class="u-full-width" value="submit">
+            </div>
+        </form>
+        </hr>
+        <table class="u-full-width">
+            <thead>
+                <th>Title</th>
+                <th>Author</th>
+                <th>ISBN</th>
+                <th></th>
+            </thead>
+            <tbody id="book-list">
+
+            </tbody>
+        </table>
+    </div>
+    <script>
+
+        //Book 
+        class Book {
+            constructor(title, author, isbn){
+                this.title = title;
+                this.author = author;
+                this.isbn = isbn;
+            }
+        }
+        // UI
+
+        class UI {
+
+            creteNewBook (title, author, isbn){
+                const bookList = document.getElementById('book-list');
+                const tr = document.createElement("tr");
+                tr.innerHTML = `
+                                <td>${title}</td>
+                                <td>${author}</td>
+                                <td>${isbn}</td>
+                                <td><a href="#" class="remove" style="text-decoration:none;">X</a></td>
+                
+                
+                `;
+                bookList.appendChild(tr);
+            }
+            addNotification(text, className){
+                const form = document.getElementById('book-form');
+                const container = document.querySelector('.container');
+                const div = document.createElement("div");
+                const newtext = document.createTextNode(text);
+                div.className = `alert ${className}`;
+                div.appendChild(newtext);
+                container.insertBefore(div, form);
+                setTimeout(function(){
+                    div.remove();
+                },2000)
+
+            }
+
+          
+        }
+        class Store{
+            static getBook(){
+                const books = Store.allBook();
+                const ui = new UI();
+                books.forEach(function(item) {
+                    ui.creteNewBook (item.title, item.author, item.isbn);
+                }); 
+    
+              
+              
+              
+            }
+            static allBook(newBook){
+                let books;
+                if(localStorage.getItem('books') === null){
+                    books = [];
+                }else{
+                    books = JSON.parse(localStorage.getItem('books'));
+                }
+                return books;
+            }
+            static addBook(newBook){
+                const books = Store.allBook();
+                books.push(newBook);
+                localStorage.setItem('books', JSON.stringify(books));
+            }
+            static removeBook(isbn){
+                const books = Store.allBook();
+                console.log(isbn);
+                books.forEach(function(item, index) {
+                   if (item.isbn === isbn){
+                        books.splice(index, 1)
+                   }
+                }); 
+                localStorage.setItem('books', JSON.stringify(books));
+            }
+        }
+        //submit event
+        document.querySelector('form').addEventListener('submit',(e) =>{
+            e.preventDefault();
+            const title = document.querySelector('#title').value;
+            const author = document.querySelector('#author').value;
+            const isbn = document.querySelector('#isbn').value;
+
+            const newBook = new Book(title, author, isbn);
+            const ui = new UI(title, author, isbn);
+
+          
+            if(title === '' || author === '' || isbn === ''){
+                ui.addNotification ('Please, enter valid value', 'error');
+            }else{
+                ui.creteNewBook (title, author, isbn);
+                ui.addNotification ('Your data successesfuly added to the book list', 'success');
+                Store.addBook(newBook);
+                Store.allBook(newBook);
+            }
+            
+        });
+
+        //remove item
+        document.getElementById('book-list').addEventListener('click', (e) => {
+            e.preventDefault();
+            let target = e.target;
+            const ui = new UI();
+            if(target.className === 'remove'){
+                target.parentElement.parentElement.remove();
+                ui.addNotification ('You successesfuly removed item from the book list', 'success');
+                Store.removeBook(target.parentElement.previousElementSibling.textContent);
+            }
+        });
+        //storage load
+        document.addEventListener("DOMContentLoaded", () => {
+            Store.getBook();
+        });
+    </script>
+</body>
+</html>
+</body>
+</html>
